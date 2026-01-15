@@ -13,4 +13,4 @@ Huddle transforms complex surety workflows into seamless collaboration. Our plat
 
 ## Learn More
 
-Visit [huddle.bond](https://huddle.bond) to learn more or request a demo.
+Visit [huddlesurety.co](https://huddlesurety.co) to learn more or request a demo.
