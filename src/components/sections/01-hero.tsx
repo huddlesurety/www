@@ -18,12 +18,17 @@ export const Hero = () => {
     <section className="h-svh px-responsive pt-20 pb-8 flex flex-col gap-8">
       <div className="flex-1 min-h-0 relative">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: "circOut" }}
-          className="absolute max-md:top-0 md:bottom-0 right-0 w-full lg:w-2/3 border aspect-video bg-muted shadow-lg overflow-hidden mask-b-from-80% mask-b-to-100% mask-r-from-80% mask-r-to-100% -z-10"
+          initial={{ opacity: 0, filter: "blur(20px)", y: 10 }}
+          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="absolute max-h-full max-w-full bottom-0 right-0 w-full md:w-3/4 lg:w-2/3 border aspect-video shadow-lg overflow-hidden mask-b-from-80% mask-b-to-100% mask-r-from-80% mask-r-to-100% -z-10"
         >
-          <video loop muted autoPlay className="size-full">
+          <video
+            loop
+            muted
+            autoPlay
+            className="size-full object-cover object-top-left opacity-60"
+          >
             <source src="/video/dashboard-form-creation.mp4" type="video/mp4" />
             Browser does not support
           </video>
