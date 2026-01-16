@@ -9,7 +9,7 @@ const Page = () => {
   return (
     <>
       <Navigation />
-      <main className="relative">
+      <main >
         <Hero />
         <Features />
         <Process />

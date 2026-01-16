@@ -1,9 +1,17 @@
 "use client";
 
-import { animate, cubicBezier, motion, stagger } from "motion/react";
+import {
+  animate,
+  cubicBezier,
+  motion,
+  stagger,
+  useAnimate,
+  useMotionValue,
+} from "motion/react";
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { LogoOutlineSVG, LogoSVG } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
 const stats = [
@@ -14,52 +22,38 @@ const stats = [
 ];
 
 export const Hero = () => {
+  const strokeWidth = useMotionValue(0);
+
+  useEffect(() => {
+    const animation = animate(strokeWidth, 0.5, {
+      duration: 1,
+      ease: "circOut",
+    });
+    return () => animation.stop();
+  }, [strokeWidth]);
+
   return (
-    <section className="h-svh px-responsive pt-20 pb-8 flex flex-col gap-8">
-      <div className="flex-1 min-h-0 relative">
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(20px)", y: 10 }}
-          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute max-h-full max-w-full bottom-0 right-0 w-full md:w-3/4 lg:w-2/3 border aspect-video shadow-lg overflow-hidden mask-b-from-80% mask-b-to-100% mask-r-from-80% mask-r-to-100% -z-10"
-        >
-          <video
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-top-left opacity-60"
-          >
-            <source src="/video/dashboard-form-creation.mp4" type="video/mp4" />
-            Browser does not support
-          </video>
-        </motion.div>
-      </div>
+    <section className="h-screen section-container pt-20 pb-8 flex flex-col gap-8 relative">
+      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-tighter leading-none">
+        Bond requests,
+        <br />
+        <span className="text-muted-foreground">
+          <StaggerCharacter>Simplified.</StaggerCharacter>
+        </span>
+      </h1>
 
-      <div className="flex flex-col lg:flex-row lg:items-end justify-end lg:justify-between gap-8 md:gap-12">
-        <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-tighter leading-none">
-          Bond requests,
-          <br />
-          <span className="text-muted-foreground">
-            <StaggerCharacter>Simplified.</StaggerCharacter>
-          </span>
-        </h1>
+      <p className="text-base max-w-sm text-muted-foreground leading-relaxed">
+        Huddle transforms surety workflows with intelligent document processing.
+        Contractors and agents collaborate seamlessly on bond requests.
+      </p>
 
-        <div className="lg:max-w-sm lg:text-right">
-          <p className="text-base text-muted-foreground leading-relaxed mb-5 md:mb-8">
-            Huddle transforms surety workflows with intelligent document
-            processing. Contractors and agents collaborate seamlessly on bond
-            requests.
-          </p>
-
-          <div className="space-x-2 space-y-1">
-            <Button size="xl" asChild>
-              <Link href="#contact">Request Demo</Link>
-            </Button>
-            <Button variant="outline" size="xl" asChild>
-              <Link href="#how-it-works">Learn More</Link>
-            </Button>
-          </div>
-        </div>
+      <div className="flex-1 space-x-2 space-y-1">
+        <Button size="xl" asChild>
+          <Link href="#contact">Request Demo</Link>
+        </Button>
+        <Button variant="outline" size="xl" asChild>
+          <Link href="#how-it-works">Learn More</Link>
+        </Button>
       </div>
 
       <hr />
@@ -84,11 +78,12 @@ type StaggerCharacterProps = {
 
 const StaggerCharacter = ({ children }: StaggerCharacterProps) => {
   const ease = cubicBezier(0.33, 1.75, 0.68, 1);
+  const [scope, animate] = useAnimate();
 
   useEffect(() => {
     animate(
       `.stagger-character`,
-      { skewX: [-20, 0], fontWeight: [500, 400], opacity: [0, 1] },
+      { skewX: [-20, 0], fontWeight: [500, 300], opacity: [0.5, 1] },
       {
         duration: 0.6,
         ease,
@@ -98,13 +93,13 @@ const StaggerCharacter = ({ children }: StaggerCharacterProps) => {
   }, []);
 
   return (
-    <>
+    <span ref={scope}>
       {children.split("").map((char, i) => (
         <motion.span
           key={i}
           initial={{ skewX: 0 }}
           whileHover={{
-            skewX: -20,
+            skewX: -10,
           }}
           transition={{
             ease,
@@ -114,6 +109,6 @@ const StaggerCharacter = ({ children }: StaggerCharacterProps) => {
           {char}
         </motion.span>
       ))}
-    </>
+    </span>
   );
 };
