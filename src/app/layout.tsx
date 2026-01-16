@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, Playfair_Display } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 
@@ -9,9 +9,9 @@ const dmSans = DM_Sans({
 });
 
 const playfair = Playfair_Display({
-  variable: "--font-playfair",
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: "variable",
 });
 
 export const metadata: Metadata = {
@@ -20,11 +20,7 @@ export const metadata: Metadata = {
     "Revolutionizing the surety industry with intelligent document processing and seamless collaboration between contractors and agents.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const Layout = ({ children }: LayoutProps<"/">) => {
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${playfair.variable}`}>
@@ -32,4 +28,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default Layout;

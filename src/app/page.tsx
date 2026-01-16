@@ -1,21 +1,23 @@
 import { Navigation } from "@/components/navigation";
-import { Contact } from "@/components/sections/contact";
-import { Features } from "@/components/sections/features";
-import { Footer } from "@/components/sections/footer";
-import { Hero } from "@/components/sections/hero";
-import { HowItWorks } from "@/components/sections/how-it-works";
+import { Hero } from "@/components/sections/01-hero";
+import { Features } from "@/components/sections/02-features";
+import { Process } from "@/components/sections/03-process";
+import { Contact } from "@/components/sections/04-contact";
+import { Footer } from "@/components/sections/05-footer";
 
-export default function Home() {
+const Page = () => {
   return (
     <>
       <Navigation />
-      <main>
+      <main className="relative">
         <Hero />
         <Features />
-        <HowItWorks />
+        <Process />
         <Contact />
       </main>
       <Footer />
     </>
   );
-}
+};
+
+export default Page;

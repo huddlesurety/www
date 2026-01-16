@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+
+import { Logo } from "./logo";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -14,32 +12,12 @@ const navLinks = [
 ];
 
 export const Navigation = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-background/90 backdrop-blur-sm border-b border-border"
-          : "bg-transparent"
-      )}
-    >
-      <nav className="px-6 md:px-12 lg:px-20 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-1 group">
-          <Image src="/logo/light.png" alt="Huddle" width={24} height={24} />
-          <span className="font-medium tracking-tight group-hover:opacity-70 transition-opacity">
-            Huddle
-          </span>
-        </Link>
+    <header className="fixed top-0 left-0 w-svw z-50 px-responsive">
+      <div className="absolute top-0 left-0 size-full backdrop-blur-md bg-background/80" />
+
+      <nav className="h-16 flex items-center justify-between relative z-10">
+        <Logo withText />
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -54,14 +32,11 @@ export const Navigation = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
-          <Link
-            href="https://dashboard.huddle.bond"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
-          >
-            Sign In
-          </Link>
-          <Button size="sm" asChild>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="lg" asChild>
+            <Link href="https://dashboard.huddlesurety.co">Sign In</Link>
+          </Button>
+          <Button size="lg" asChild>
             <Link href="#contact">Get Started</Link>
           </Button>
         </div>
