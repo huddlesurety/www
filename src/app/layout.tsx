@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import { DM_Sans, Lora, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 
@@ -23,7 +23,9 @@ export const metadata: Metadata = {
 const Layout = ({ children }: LayoutProps<"/">) => {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${playfair.variable}`}>
+      <body
+        className={`${dmSans.variable} ${playfair.variable} subpixel-antialiased`}
+      >
         {children}
       </body>
     </html>

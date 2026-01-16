@@ -15,36 +15,16 @@ const stats = [
 
 export const Hero = () => {
   return (
-    <section className="h-svh px-responsive pt-20 pb-8 flex flex-col gap-8">
-      <div className="flex-1 min-h-0 relative">
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(20px)", y: 10 }}
-          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute max-h-full max-w-full bottom-0 right-0 w-full md:w-3/4 lg:w-2/3 border aspect-video shadow-lg overflow-hidden mask-b-from-80% mask-b-to-100% mask-r-from-80% mask-r-to-100% -z-10"
-        >
-          <video
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-top-left opacity-60"
-          >
-            <source src="/video/dashboard-form-creation.mp4" type="video/mp4" />
-            Browser does not support
-          </video>
-        </motion.div>
-      </div>
-
-      <div className="flex flex-col lg:flex-row lg:items-end justify-end lg:justify-between gap-8 md:gap-12">
-        <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-tighter leading-none">
-          Bond requests,
-          <br />
+    <section className="section-container pt-40 pb-8 flex flex-col gap-8">
+      <div className="flex flex-col items-center lg:justify-between gap-8 md:gap-12">
+        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tighter leading-none">
+          Bond requests,{" "}
           <span className="text-muted-foreground">
             <StaggerCharacter>Simplified.</StaggerCharacter>
           </span>
         </h1>
 
-        <div className="lg:max-w-sm lg:text-right">
+        <div className="lg:max-w-sm text-center">
           <p className="text-base text-muted-foreground leading-relaxed mb-5 md:mb-8">
             Huddle transforms surety workflows with intelligent document
             processing. Contractors and agents collaborate seamlessly on bond
@@ -61,6 +41,23 @@ export const Hero = () => {
           </div>
         </div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="aspect-video"
+      >
+        <video
+          loop
+          muted
+          autoPlay
+          className="size-full border ring ring-offset-2 ring-border object-cover object-top-left"
+        >
+          <source src="/video/dashboard-form-creation.mp4" type="video/mp4" />
+          Browser does not support
+        </video>
+      </motion.div>
 
       <hr />
 
@@ -88,7 +85,7 @@ const StaggerCharacter = ({ children }: StaggerCharacterProps) => {
   useEffect(() => {
     animate(
       `.stagger-character`,
-      { skewX: [-20, 0], fontWeight: [500, 400], opacity: [0, 1] },
+      { skewX: [-20, 0], fontWeight: [500, 400] },
       {
         duration: 0.6,
         ease,
@@ -109,7 +106,7 @@ const StaggerCharacter = ({ children }: StaggerCharacterProps) => {
           transition={{
             ease,
           }}
-          className="stagger-character inline-block cursor-grabbing opacity-0"
+          className="stagger-character inline-block cursor-grabbing"
         >
           {char}
         </motion.span>

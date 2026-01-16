@@ -12,10 +12,9 @@ const navLinks = [
 
 export const Navigation = () => {
   return (
-    <header className="fixed top-0 left-0 w-svw z-50 px-responsive">
+    <header className="fixed w-svw z-50">
       <div className="absolute top-0 left-0 size-full backdrop-blur-md bg-background/80" />
-
-      <nav className="h-16 flex items-center justify-between relative z-10">
+      <nav className="section-container py-0 h-16 flex items-center justify-between relative z-10">
         <Logo withText />
 
         <div className="hidden md:flex items-center gap-8">
