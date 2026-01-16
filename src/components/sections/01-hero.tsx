@@ -1,7 +1,6 @@
 "use client";
 
 import { animate, cubicBezier, motion, stagger } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -25,7 +24,7 @@ export const Hero = () => {
           className="absolute max-md:top-0 md:bottom-0 right-0 w-full lg:w-2/3 border aspect-video bg-muted shadow-lg overflow-hidden mask-b-from-80% mask-b-to-100% mask-r-from-80% mask-r-to-100% -z-10"
         >
           <video loop muted autoPlay className="size-full">
-            <source src="/video/dashboard-field-gen.mp4" type="video/mp4" />
+            <source src="/video/dashboard-form-creation.mp4" type="video/mp4" />
             Browser does not support
           </video>
         </motion.div>
