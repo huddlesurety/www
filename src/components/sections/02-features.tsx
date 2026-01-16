@@ -78,7 +78,6 @@ const FeatureCard = ({
   feature,
   large,
   horizontal,
-  id,
   className,
   ...props
 }: FeatureCardProps) => {
