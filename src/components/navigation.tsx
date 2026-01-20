@@ -30,7 +30,7 @@ export const Navigation = () => {
   });
 
   return (
-    <header className="fixed w-svw z-50 border-b bg-background/10">
+    <header className="fixed w-full z-50 border-b bg-background/10">
       <motion.nav
         style={style}
         className="container mx-auto px-8 border-x py-4 flex items-center justify-between relative z-10"
