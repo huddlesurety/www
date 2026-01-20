@@ -24,7 +24,7 @@ const Layout = ({ children }: LayoutProps<"/">) => {
   return (
     <html lang="en">
       <body
-        className={`${sans.variable} ${serif.variable} subpixel-antialiased font-sans relative`}
+        className={`${sans.variable} ${serif.variable} subpixel-antialiased font-sans relative overflow-y-scroll`}
       >
         <div className="bg-[url(/noise.png)] opacity-5 absolute size-full" />
         {children}
