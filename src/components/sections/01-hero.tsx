@@ -1,119 +1,67 @@
 "use client";
 
-import { animate, cubicBezier, motion, stagger } from "motion/react";
+import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 
-const stats = [
-  { value: "90%", label: "Reduction in manual entry" },
-  { value: "3x", label: "Faster bond processing" },
-  { value: "500+", label: "Bonds processed monthly" },
-  { value: "24/7", label: "Real-time collaboration" },
-];
-
 export const Hero = () => {
   return (
-    <section className="h-svh px-responsive pt-20 pb-8 flex flex-col gap-8">
-      <div className="flex-1 min-h-0 relative">
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(20px)", y: 10 }}
-          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute max-h-full max-w-full bottom-0 right-0 w-full md:w-3/4 lg:w-2/3 border aspect-video shadow-lg overflow-hidden mask-b-from-80% mask-b-to-100% mask-r-from-80% mask-r-to-100% -z-10"
-        >
-          <video
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-top-left opacity-60"
-          >
-            <source src="/video/dashboard-form-creation.mp4" type="video/mp4" />
-            Browser does not support
-          </video>
-        </motion.div>
-      </div>
+    <section className="flex flex-col justify-center pb-12 gap-8 md:gap-12 h-svh relative overflow-hidden">
+      <div className="absolute right-0 top-0 size-full bg-amber-50 mask-linear-225 mask-linear-from-0% mask-linear-to-50%" />
+      <div className="absolute right-0 top-0 size-full bg-[url(/noise.png)] mask-linear-225 mask-linear-from-0% mask-linear-to-50% opacity-10" />
 
-      <div className="flex flex-col lg:flex-row lg:items-end justify-end lg:justify-between gap-8 md:gap-12">
-        <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-tighter leading-none">
-          Bond requests,
-          <br />
-          <span className="text-muted-foreground">
-            <StaggerCharacter>Simplified.</StaggerCharacter>
-          </span>
-        </h1>
+      <motion.h1
+        initial={{ fontWeight: 800, opacity: 0 }}
+        animate={{ fontWeight: 400, opacity: 1 }}
+        transition={{
+          duration: 1,
+          ease: "easeOut",
+          // delay: 0.2,
+        }}
+        className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tighter leading-none text-primary"
+      >
+        The New Era of
+        <br />
+        Surety Bonds
+      </motion.h1>
 
-        <div className="lg:max-w-sm lg:text-right">
-          <p className="text-base text-muted-foreground leading-relaxed mb-5 md:mb-8">
-            Huddle transforms surety workflows with intelligent document
-            processing. Contractors and agents collaborate seamlessly on bond
-            requests.
-          </p>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          ease: "easeOut",
+          delay: 0.2,
+        }}
+        className="max-w-lg text-base text-muted-foreground leading-relaxed"
+      >
+        Move beyond the limitations of antiquated systems.
+        <br />
+        Huddle streamlines the entire request-to-execution journey,
+        <br />
+        allowing brokers to focus on high-value advisory
+        <br />
+        and client relationships.
+      </motion.p>
 
-          <div className="space-x-2 space-y-1">
-            <Button size="xl" asChild>
-              <Link href="#contact">Request Demo</Link>
-            </Button>
-            <Button variant="outline" size="xl" asChild>
-              <Link href="#how-it-works">Learn More</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      <hr />
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-        {stats.map((stat, i) => (
-          <div key={i}>
-            <p className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              {stat.value}
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-          </div>
-        ))}
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          ease: "easeOut",
+          delay: 0.3,
+        }}
+        className="space-x-2 space-y-1 overflow-hidden"
+      >
+        <Button size="xl" asChild>
+          <Link href="#contact">Request Demo</Link>
+        </Button>
+        <Button variant="outline" size="xl" asChild>
+          <Link href="#process">Learn More</Link>
+        </Button>
+      </motion.div>
     </section>
-  );
-};
-
-type StaggerCharacterProps = {
-  children: string;
-};
-
-const StaggerCharacter = ({ children }: StaggerCharacterProps) => {
-  const ease = cubicBezier(0.33, 1.75, 0.68, 1);
-
-  useEffect(() => {
-    animate(
-      `.stagger-character`,
-      { skewX: [-20, 0], fontWeight: [500, 400], opacity: [0, 1] },
-      {
-        duration: 0.6,
-        ease,
-        delay: stagger(0.03, { startDelay: 0.3, ease: "circIn" }),
-      }
-    );
-  }, []);
-
-  return (
-    <>
-      {children.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          initial={{ skewX: 0 }}
-          whileHover={{
-            skewX: -20,
-          }}
-          transition={{
-            ease,
-          }}
-          className="stagger-character inline-block cursor-grabbing opacity-0"
-        >
-          {char}
-        </motion.span>
-      ))}
-    </>
   );
 };

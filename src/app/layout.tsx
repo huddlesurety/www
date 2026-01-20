@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import { Asta_Sans, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const sans = Asta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
+const serif = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: "variable",
@@ -23,7 +23,10 @@ export const metadata: Metadata = {
 const Layout = ({ children }: LayoutProps<"/">) => {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${playfair.variable}`}>
+      <body
+        className={`${sans.variable} ${serif.variable} subpixel-antialiased font-sans relative`}
+      >
+        <div className="bg-[url(/noise.png)] opacity-5 absolute size-full" />
         {children}
       </body>
     </html>
