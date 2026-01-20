@@ -18,27 +18,21 @@ type Step = {
 const steps: Step[] = [
   {
     id: "01",
-    title: "Upload",
+    title: "Auto-Generate Bond Requests",
     description:
-      "Drag and drop your project documents. Our AI instantly processes contracts, financial statements, and supporting materials.",
+      "Provide your clients with a modern, AI-driven portal that automates bond requests while ensuring completion of request forms.",
   },
   {
     id: "02",
-    title: "Extract",
+    title: "Streamline Quality Control",
     description:
-      "Advanced RAG pipeline extracts key information, validates data, and pre-fills bond request forms with remarkable accuracy.",
+      "Verify underwriting information with Huddle Highlight™, providing source references for bond requests and enabling faster reviews.",
   },
   {
     id: "03",
-    title: "Collaborate",
+    title: "Automate Bond Execution",
     description:
-      "Contractors and agents review together in real-time. Make edits, add notes, and track changes with full version history.",
-  },
-  {
-    id: "04",
-    title: "Submit",
-    description:
-      "Generate complete bond packages with one click. Monitor approval status and receive instant notifications.",
+      "Move from requests to bond execution within seconds, by auto-filling any bond form.",
   },
 ];
 
@@ -54,7 +48,7 @@ export const Process = () => {
   const activeStepFloat = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, steps.length - 1],
+    [0, steps.length - 1]
   );
 
   useMotionValueEvent(activeStepFloat, "change", (latest) => {
@@ -69,12 +63,16 @@ export const Process = () => {
       id="process"
       ref={containerRef}
       style={{ height: `${steps.length * 100}vh` }}
-      className="relative bg-muted/30"
+      className="relative"
     >
-      <div className="sticky top-0 h-svh overflow-hidden flex flex-col section-container">
+      <div className="sticky top-0 h-svh pt-32 pb-20 overflow-hidden flex flex-col">
         <div className="pb-12">
           <p className="section-label">Process</p>
-          <h2 className="section-title">Four steps to faster bonds</h2>
+          <h2 className="section-title">
+            A Seamless AI Journey
+            <br />
+            to Bond Requests
+          </h2>
         </div>
 
         <div className="flex-1 min-h-0 pb-8 lg:pb-16 flex flex-col lg:flex-row gap-6 lg:gap-20">

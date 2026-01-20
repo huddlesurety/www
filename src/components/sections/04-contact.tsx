@@ -6,17 +6,16 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "../ui/empty";
+} from "@/components/ui/empty";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const benefits = [
   "Free 30-minute demo",
@@ -26,34 +25,32 @@ const benefits = [
 
 export const Contact = () => {
   return (
-    <section id="contact" className="section-container">
-      <div className="flex flex-col lg:flex-row gap-16">
-        <div className="flex-1">
-          <p className="section-label">Get Started</p>
-          <div className="space-y-4 md:space-y-8">
-            <h2 className="section-title">
-              Ready to transform
-              <br />
-              your workflow?
-            </h2>
-            <p className="section-description">
-              Schedule a personalized demo to see how Huddle can streamline your
-              surety bond operations.
-            </p>
-            <ul className="space-y-3 text-sm">
-              {benefits.map((benefit) => (
-                <li key={benefit} className="flex items-center gap-3">
-                  <span className="w-5 h-px bg-foreground" />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-          </div>
+    <section id="contact" className="flex flex-col lg:flex-row gap-16 pb-32">
+      <div className="flex-1">
+        <p className="section-label">Get Started</p>
+        <div className="space-y-4 md:space-y-8">
+          <h2 className="section-title">
+            Ready to transform
+            <br />
+            your workflow?
+          </h2>
+          <p className="section-description max-w-lg">
+            Schedule a personalized demo to see how Huddle can streamline your
+            surety bond operations.
+          </p>
+          <ul className="space-y-3 text-sm">
+            {benefits.map((benefit) => (
+              <li key={benefit} className="flex items-center gap-3">
+                <span className="w-5 h-px bg-foreground" />
+                {benefit}
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
 
-        <div className="lg:w-md">
-          <ContactForm />
-        </div>
+      <div className="lg:w-md xl:w-xl">
+        <ContactForm />
       </div>
     </section>
   );

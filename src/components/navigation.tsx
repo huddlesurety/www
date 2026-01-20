@@ -1,4 +1,8 @@
+"use client";
+
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
+import { CSSProperties, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -11,10 +15,26 @@ const navLinks = [
 ];
 
 export const Navigation = () => {
+  const { scrollY } = useScroll();
+  const [style, setStyle] = useState<CSSProperties>({
+    background: "transparent",
+  });
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const opacity = Math.min((latest / 64) * 100, 90);
+    const blur = Math.min(latest / 20, 10);
+    setStyle({
+      background: `color-mix(in oklab, var(--background) ${opacity}%, transparent)`,
+      backdropFilter: `blur(${blur}px)`,
+    });
+  });
+
   return (
-    <header className="fixed w-svw z-50">
-      <div className="absolute top-0 left-0 size-full backdrop-blur-md bg-background/80" />
-      <nav className="section-container py-0 h-16 flex items-center justify-between relative z-10">
+    <header className="fixed w-svw z-50 border-b bg-background/10">
+      <motion.nav
+        style={style}
+        className="container mx-auto px-8 border-x py-4 flex items-center justify-between relative z-10"
+      >
         <Logo withText />
 
         <div className="hidden md:flex items-center gap-8">
@@ -22,7 +42,7 @@ export const Navigation = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
+              className="text-muted-foreground hover:text-foreground transition-colors relative group"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
@@ -38,7 +58,7 @@ export const Navigation = () => {
             <Link href="#contact">Get Started</Link>
           </Button>
         </div>
-      </nav>
+      </motion.nav>
     </header>
   );
 };

@@ -23,7 +23,7 @@ const links = {
 export const Footer = () => {
   return (
     <footer className="border-t">
-      <div className="section-container py-16">
+      <div className="w-responsive py-16 border-x">
         <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
           <div className="max-w-xs">
             <Logo withText />
