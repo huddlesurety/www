@@ -15,7 +15,7 @@ export const Hero = () => {
           duration: 1,
           ease: "circOut",
         }}
-        className="absolute right-0 top-0 size-full bg-primary/20 mask-linear-225 mask-linear-from-0% mask-linear-to-40% origin-top-right"
+        className="absolute right-0 top-0 size-full bg-primary/20 mask-linear-225 mask-linear-from-0% mask-linear-to-40% origin-top-right pointer-events-none"
       />
 
       <motion.h1
