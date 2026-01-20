@@ -9,7 +9,6 @@ export const Hero = () => {
   return (
     <section className="flex flex-col justify-center pb-12 gap-8 md:gap-12 h-svh relative overflow-hidden">
       <div className="absolute right-0 top-0 size-full bg-amber-50 mask-linear-225 mask-linear-from-0% mask-linear-to-50%" />
-      <div className="absolute right-0 top-0 size-full bg-[url(/noise.png)] mask-linear-225 mask-linear-from-0% mask-linear-to-50% opacity-10" />
 
       <motion.h1
         initial={{ fontWeight: 800, opacity: 0 }}
@@ -17,7 +16,6 @@ export const Hero = () => {
         transition={{
           duration: 1,
           ease: "easeOut",
-          // delay: 0.2,
         }}
         className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tighter leading-none text-primary"
       >
