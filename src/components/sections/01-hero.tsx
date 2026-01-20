@@ -8,7 +8,15 @@ import { Button } from "@/components/ui/button";
 export const Hero = () => {
   return (
     <section className="flex flex-col justify-center pb-12 gap-8 md:gap-12 h-svh relative overflow-hidden">
-      <div className="absolute right-0 top-0 size-full bg-amber-50 mask-linear-225 mask-linear-from-0% mask-linear-to-50%" />
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{
+          duration: 1,
+          ease: "circOut",
+        }}
+        className="absolute right-0 top-0 size-full bg-primary/20 mask-linear-225 mask-linear-from-0% mask-linear-to-40% origin-top-right"
+      />
 
       <motion.h1
         initial={{ fontWeight: 800, opacity: 0 }}
