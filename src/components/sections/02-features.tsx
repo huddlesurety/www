@@ -86,7 +86,7 @@ const FeatureCard = ({ feature, className, ...props }: FeatureCardProps) => {
     <div
       {...props}
       className={cn(
-        "group border p-8 hover:border-ring transition-colors duration-300",
+        "group border p-8 hover:border-ring transition-colors duration-300 backdrop-blur-xl",
         className
       )}
     >

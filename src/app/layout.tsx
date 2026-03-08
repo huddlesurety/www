@@ -6,6 +6,7 @@ import "./globals.css";
 const sans = Asta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
+  adjustFontFallback: false,
 });
 
 const serif = Playfair_Display({

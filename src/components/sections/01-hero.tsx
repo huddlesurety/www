@@ -13,7 +13,7 @@ const Wave = dynamic(
 
 export const Hero = () => {
   return (
-    <section className="h-[calc(100vh-65px)] py-6 md:py-12 lg:py-20 relative flex flex-col">
+    <section className="h-[calc(100vh-65px)] py-6 md:py-12 lg:py-20 relative flex flex-col justify-between">
       <div className="flex flex-col pb-12 gap-8 md:gap-12 relative overflow-hidden">
         <motion.h1
           initial={{ fontWeight: 800, opacity: 0 }}
@@ -67,10 +67,7 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="relative flex-1">
-        <motion.div className="absolute right-0 bottom-0 rounded-full size-50 bg-primary" />
-        <div className="" />
-      </div>
+      <Wave />
     </section>
   );
 };
