@@ -28,7 +28,6 @@ export const Navigation = () => {
       backdropFilter: `blur(${blur}px)`,
     });
   });
-  console.log(process.env.NEXT_PUBLIC_APP_URL)
 
   return (
     <header className="fixed w-full z-50 border-b bg-background/10">
