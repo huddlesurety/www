@@ -27,7 +27,7 @@ const Page = () => {
           duration: 0.8,
           ease: "circOut",
         }}
-        className="w-responsive border-x bg-background relative flex flex-col gap-20 md:gap-32 lg:gap-40 xl:gap-48 outline"
+        className="w-responsive border-x relative flex flex-col gap-20 md:gap-32 lg:gap-40 xl:gap-48 outline"
       >
         <Hero />
         <Features />

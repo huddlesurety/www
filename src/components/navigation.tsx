@@ -52,7 +52,7 @@ export const Navigation = () => {
 
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="lg" asChild>
-            <Link href="https://dashboard.huddlesurety.co">Sign In</Link>
+            <Link href={process.env.NEXT_PUBLIC_APP_URL}>Sign In</Link>
           </Button>
           <Button size="lg" asChild>
             <Link href="#contact">Get Started</Link>

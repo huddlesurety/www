@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Asta_Sans, Playfair_Display } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 
 import "./globals.css";
-
-const sans = Asta_Sans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
 
 const serif = Playfair_Display({
   variable: "--font-serif",
@@ -24,7 +19,7 @@ const Layout = ({ children }: LayoutProps<"/">) => {
   return (
     <html lang="en">
       <body
-        className={`${sans.variable} ${serif.variable} subpixel-antialiased font-sans relative overflow-y-scroll`}
+        className={`${serif.variable} subpixel-antialiased font-sans relative overflow-y-scroll`}
       >
         <div className="bg-[url(/noise.png)] opacity-5 absolute size-full" />
         {children}
